@@ -6,7 +6,8 @@ const int64_t mod = 1e9 + 7;
 int main() {
 	int64_t N = 600851475143;
 	vector<int64_t> v;
-
+	
+	//素因数分解
 	for (int64_t i = 2;i<=sqrt(N); i++) {
 		while (N % i == 0) {
 			cout << i << endl;
