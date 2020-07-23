@@ -1,0 +1,68 @@
+#include <bits/stdc++.h>
+#define PI 3.14159265359
+using namespace std;
+const int64_t MOD = 1e9 + 7;
+
+int main() {
+	vector<int> v(20);
+	for (int i = 0; i < v.size(); i++) {
+		if (!i) v.at(i) = 0;
+		else v.at(i) = 1;
+	}
+
+	for (int i = 1; i < v.size(); i++) {
+		if (i == v.size() - 1) break;
+		int n = i + 1;
+
+		for (int j = i + 1; j < v.size(); j++) {
+			int m = j + 1;
+
+			if (m % n == 0) {
+				v.at(j) = 0;
+			}
+		}
+	}
+
+	//for (int i = 0; i < v.size(); i++) {
+	//	if (v.at(i)) cout << i + 1 << endl;
+	//}
+
+	for (int i = 1; i < v.size(); i++) {
+		if (v.at(i) == 0) {
+			vector<int> v2(20);
+			int n = i + 1;
+			//cout << n << endl;
+
+			int a = 2;
+			while (n >= a * a) {
+				if (n % a == 0) {
+					v2.at(a - 1)++;
+					n /= a;
+				}
+				else {
+					a++;
+				}
+			}
+
+			if (n > 1) v2.at(n - 1)++;
+
+			for (int j = 1; j < v.size(); j++) {
+				if (v.at(j) < v2.at(j)) v.at(j) = v2.at(j);
+			}
+		}
+	}
+
+	//for (int i = 0; i < v.size(); i++) {
+	//	cout << "pn:" << i+1 << ' ' << "v:" << v.at(i) << endl;
+	//}
+
+	int ans = 1;
+	for (int i = 1; i < v.size(); i++) {
+		int n = v.at(i);
+		for (int j = 0; j < n; j++) {
+			ans *= i + 1;
+		}
+	}
+
+	cout << ans << endl;
+}
