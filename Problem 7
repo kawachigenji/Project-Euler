@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+#define PI 3.14159265359
+using namespace std;
+const int64_t MOD = 1e9 + 7;
+
+int main() {
+	int cnt = 6;
+	vector<int64_t> v = { 2,3,5,7,11,13 };
+
+	for (int64_t i = 15;; i += 2) {
+		int f = 1;
+
+		for (int j = 0; j < v.size(); j++) {
+			if (i%v.at(j) == 0) {
+				f = 0;
+				break;
+			}
+		}
+
+		if (f) {
+			cnt++;
+			v.push_back(i);
+		}
+
+		if (cnt == 10001) {
+			cout << v.at(v.size() - 1) << endl;
+			return 0;
+		}
+	}
+}
