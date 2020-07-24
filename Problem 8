@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+#define PI 3.14159265359
+using namespace std;
+const int64_t MOD = 1e9 + 7;
+
+int main() {
+	string S;
+	cin >> S;
+	
+	uint64_t MAX = 0;
+	for (int i = 0; i < S.size()-13; i++) {
+		uint64_t a = 1;
+
+		for (int j = 0; j < 13; j++) {
+			char ch = S.at(i + j);
+			int n = (int)ch - '0';
+			//cout << n;
+			a *= n;
+		}
+
+		if (a > MAX) MAX = a;
+	}
+
+	cout << MAX << endl;
+}
