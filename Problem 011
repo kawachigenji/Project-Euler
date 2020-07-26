@@ -1,0 +1,62 @@
+#include <bits/stdc++.h>
+#define PI 3.14159265359
+using namespace std;
+const int64_t MOD = 1e9 + 7;
+
+int main() {
+	int64_t MAX = 0;
+	vector<vector<int>> v(20, vector<int>(20));
+
+	for (int i = 0; i < 20; i++) {
+		for (int j = 0; j < 20; j++) {
+			cin >> v.at(i).at(j);
+		}
+	}
+
+	for (int i = 0; i < 20; i++) {
+		for (int j = 0; j < 17; j++) {
+			int a, b, c, d;
+			a = v.at(i).at(j);
+			b = v.at(i).at(j + 1);
+			c = v.at(i).at(j + 2);
+			d = v.at(i).at(j + 3);
+
+			int n = a * b * c * d;
+			if (n > MAX) MAX = n;
+
+			a = v.at(j).at(i);
+			b = v.at(j + 1).at(i);
+			c = v.at(j + 2).at(i);
+			d = v.at(j + 3).at(i);
+
+			n = a * b * c * d;
+			if (n > MAX) MAX = n;
+		}
+	}
+
+	for (int i = 0; i < 17; i++) {
+		for (int j = 0; j < 17; j++) {
+			int a, b, c, d;
+			a = v.at(i).at(j);
+			b = v.at(i+1).at(j + 1);
+			c = v.at(i+2).at(j + 2);
+			d = v.at(i+3).at(j + 3);
+
+			int n = a * b * c * d;
+			if (n > MAX) MAX = n;
+		}
+
+		for (int j = 3; j < 20; j++) {
+			int a, b, c, d;
+			a = v.at(i).at(j);
+			b = v.at(i + 1).at(j - 1);
+			c = v.at(i + 2).at(j - 2);
+			d = v.at(i + 3).at(j - 3);
+
+			int n = a * b * c * d;
+			if (n > MAX) MAX = n;
+		}
+	}
+
+	cout << MAX << endl;
+}
